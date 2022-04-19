@@ -15,18 +15,7 @@ main =
         args <- getArgs
         let url = Prelude.head $ Prelude.take 1 args
         response <- get url
-        --response <- get take 1 args
-        --print (response ^. responseBody)
-        --print (response ^. responseBody)
-        --Prelude.putStr $ Data.ByteString.Lazy.Char8.unpack $ r ^. responseBody
-        --putStr $ BS.unpack $ r ^. responseBody
         Prelude.putStr $ BS.unpack $ response ^. responseBody
-
-        --let url = take 1 args
-         --in do
-             --response <- get url
-             --print (response ^. responseBody)
-
 
 -- Parse the command line arguments
 --parse ["-h"] = usage   >> exit
