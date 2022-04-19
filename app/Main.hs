@@ -9,13 +9,16 @@ import Network.Wreq
 import Control.Lens
 import Data.ByteString.Lazy.Char8 as BS
 
+-- | Show the html response body
+showHTMLResponse respBody = Prelude.putStr $ BS.unpack $ respBody
+
 main :: IO ()
 main =
     do
         args <- getArgs
         let url = Prelude.head $ Prelude.take 1 args
         response <- get url
-        Prelude.putStr $ BS.unpack $ response ^. responseBody
+        showHTMLResponse $ response ^. responseBody
 
 -- Parse the command line arguments
 
