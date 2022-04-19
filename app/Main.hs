@@ -18,11 +18,13 @@ main =
         Prelude.putStr $ BS.unpack $ response ^. responseBody
 
 -- Parse the command line arguments
---parse ["-h"] = usage   >> exit
---parse ["-v"] = version >> exit
---parse []  = getContents
 
---usage   = putStrLn "Usage: cite [-vh] [urls]"
---version = putStrLn "Haskell cite 0.1.0"
---exit    = exitWith ExitSuccess
---die     = exitWith (ExitFailure 1)
+-- Parse the command line flags
+parse ["-h"] = usage   >> exit
+parse ["-v"] = version >> exit
+parse []  = Prelude.getContents
+
+usage   = Prelude.putStrLn "Usage: cite [-vh] [urls]"
+version = Prelude.putStrLn "Haskell cite 0.1.0"
+exit    = System.Exit.exitWith ExitSuccess
+die     = System.Exit.exitWith (ExitFailure 1)
